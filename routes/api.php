@@ -22,6 +22,10 @@ use App\Http\Controllers\ProductController;
 
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
 
+Route::get('response', function () {
+    return response('blog', 201)->header('Content-Type', 'application/json')->cookie('my_cookie', '1234', 3600);
+});
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('products', [ProductController::class, 'index']);
 });

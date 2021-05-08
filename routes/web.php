@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\BlogPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('posts', BlogPostController::class);
+
 Route::view('login', 'login');
 
 Route::view('home', 'home');
+
+Route::get('request', function (Request $request) {
+    ddd($request->all());
+});
